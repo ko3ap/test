@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  vpn-bot:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock  # для управления AWG-пирами
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - DB_PATH=/app/data/bot.db
+      - AWG_CONTAINER=${AWG_CONTAINER:-amnezia-awg}
+      - AWG_INTERFACE=${AWG_INTERFACE:-wg0}
+    env_file:
+      - .env
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

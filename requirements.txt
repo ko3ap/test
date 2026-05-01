@@ -1,0 +1,7 @@
+aiogram==3.13.1
+qrcode[pil]==8.0
+Pillow==11.1.0
+python-dotenv==1.0.1
+yookassa==3.10.0
+cryptography==43.0.3
+docker==7.1.0
